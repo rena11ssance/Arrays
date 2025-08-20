@@ -67,7 +67,7 @@ namespace Task_6
                 isMagic = false;
 
             Console.WriteLine(isMagic ? "Это магический квадрат." : "Это не магический квадрат.");
-
+            Console.ReadKey();
         }
     }
 }
