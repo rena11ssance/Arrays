@@ -272,58 +272,58 @@ namespace Task_6
         static void Main(string[] args)
         {
             Console.Write("Введите размерность матрицы N: ");
-            int n = Convert.ToInt32(Console.ReadLine());
+            int nValue = Convert.ToInt32(Console.ReadLine());
 
-            int[,] matrix = new int[n, n];
+            int[,] arrayInitialization = new int[nValue, nValue];
 
             Console.WriteLine("Введите элементы матрицы построчно.");
-            for (int i = 0; i < n; i++)
+            for (int i = 0; i < nValue; i++)
             {
-                for (int j = 0; j < n; j++)
+                for (int j = 0; j < nValue; j++)
                 {
                     Console.Write("Элемент {0}, {1}: ", i, j);
-                    matrix[i, j] = Convert.ToInt32(Console.ReadLine());
+                    arrayInitialization[i, j] = Convert.ToInt32(Console.ReadLine());
                 }
             }
 
             Console.WriteLine("Матрица: ");
-            for (int i = 0; i < n; i++)
+            for (int i = 0; i < nValue; i++)
             {
-                for (int j = 0; j < n; j++)
+                for (int j = 0; j < nValue; j++)
                 {
-                    Console.Write(matrix[i, j] + " ");
+                    Console.Write(arrayInitialization[i, j] + " ");
                 }
                 
                 Console.WriteLine();
             }
 
             int magicSum = 0;
-            for (int j = 0; j < n; j++)
+            for (int j = 0; j < nValue; j++)
             {
-                magicSum += matrix[0, j];
+                magicSum += arrayInitialization[0, j];
 
             }
             bool isMagic = true;
 
-            for (int i = 0; i < n && isMagic; i++)
+            for (int i = 0; i < nValue && isMagic; i++)
             {
                 int rowSum = 0, colSum = 0;
-                for (int j = 0; j < n; j++)
+                for (int j = 0; j < nValue; j++)
                 {
-                    rowSum += matrix[i, j];
-                    colSum += matrix[j, i];
+                    rowSum += arrayInitialization[i, j];
+                    colSum += arrayInitialization[j, i];
                 }
                 if (rowSum != magicSum || colSum != magicSum)
                     isMagic = false;
             }
 
-            int mainDiag = 0, sideDiag = 0;
-            for (int i = 0; i < n; i++)
+            int mainDiagonal = 0, sideDiagonal = 0;
+            for (int i = 0; i < nValue; i++)
             {
-                mainDiag += matrix[i, i];
-                sideDiag += matrix[i, n - 1 - i];
+                mainDiagonal += arrayInitialization[i, i];
+                sideDiagonal += arrayInitialization[i, nValue - 1 - i];
             }
-            if (mainDiag != magicSum || sideDiag != magicSum)
+            if (mainDiagonal != magicSum || sideDiagonal != magicSum)
                 isMagic = false;
 
             Console.WriteLine(isMagic ? "Это магический квадрат." : "Это не магический квадрат.");
